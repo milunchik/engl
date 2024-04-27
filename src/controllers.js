@@ -9,11 +9,20 @@ const getWord = async(req, res) =>{
     }
 };
 
+const getOne = async(req, res)=>{
+    try{
+        const {id} = req.params;
+        const word = await WordModel.findOne({_id: id});
+        res.status(200).json(word);
+    }catch(error){
+        res.status(400).send(error)
+    }
+}
+
 const getAllWords = async(req, res) =>{
 
     try{
         const words = await WordModel.find();
-        //res.send({'words': words});
         res.json({words})
     }catch(error){
         res.status(400).send(error)
@@ -57,6 +66,7 @@ const deleteWord = async(req, res)=>{
 
 module.exports = {
     getWord,
+    getOne,
     getAllWords,
     postWord,
     updateWord,

@@ -3,6 +3,7 @@ const router = express.Router();
 const wordControllers = require('./controllers.js');
 
 router.get('/', wordControllers.getWord);
+router.get('/word/:id', wordControllers.getOne);
 router.get('/allwords', wordControllers.getAllWords);
 router.post('/words', wordControllers.postWord);
 router.put('/words/:id', wordControllers.updateWord);

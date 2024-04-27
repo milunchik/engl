@@ -15,7 +15,6 @@ wordsArrayTranslation = [];
 wordsArrayTranslate = [];
 let userTranslation = gameUserTranslation.value;
 
-
 selectTag.forEach((tag, id) =>{
     for(const country_code in countries){
         let selected = '';
@@ -66,92 +65,50 @@ translateBtn.addEventListener('click', async () => {
             if (newWordResponse.ok) {
                 let newWordData = await newWordResponse.json();
                 
-                let newWord = document.createElement('li');
-                newWord.textContent = `${text} - ${toText.value} `;
-                words.appendChild(newWord);
-                wordsArrayTranslation.push(toText.value);
-                wordsArrayTranslate.push(text);
-                
                 fetch('/allwords')
                 .then(response => response.json())
                 .then(data => {
                     const wordsList = document.getElementById('wordsList');
-                    //wordsList.innerHTML = '';
-
+                    wordsList.innerHTML = '';
                     data.words.forEach(word => {
                         const li = document.createElement('li');
-                        li.textContent = `${word.word}: ${word.translation}`;
+                        li.textContent = `${word.word} - ${word.translation}`;
+                        li.dataset.id = word._id;
+                        console.log(li.dataset.id); 
                         wordsList.appendChild(li);
+
+                        const deleteButton = document.createElement('button');    
+                        deleteButton.textContent = 'Delete';
+                        deleteButton.classList.add('deleteButton');
+
+                        deleteButton.addEventListener('click', async () => {
+                            const id = li.dataset.id
+                            try {
+                                const response = await fetch(`/words/${id}`, {
+                                    method: 'DELETE'
+                                });
+
+                                if (response.ok) {
+                                    console.log('Word deleted');
+                                    wordsList.removeChild(li);
+                                }
+                            } catch (error) {
+                                console.log(error);
+                                alert('Failed to delete from database');
+                            }
+                        });
+
+                        li.appendChild(deleteButton);
+
                     });
                 })
                 .catch(error => console.error('Error fetching words:', error));
-
-
-                const deleteButton = document.createElement('button');
-                //deleteButton.setAttribute('data-id', 123);
-                deleteButton.textContent = 'Delete';
-                deleteButton.classList.add('deleteButton');
-
-                deleteButton.addEventListener('click', async () => {
-                    const listItem = deleteButton.parentElement;
-                    const wordToRemove = listItem.textContent.split(' - ')[0];
-                    console.log(wordToRemove);
-                    const indexToRemove = wordsArrayTranslate.indexOf(wordToRemove);
-                    if (indexToRemove !== -1) {
-                        wordsArrayTranslate.splice(indexToRemove, 1);
-                        wordsArrayTranslation.splice(indexToRemove, 1);
-                    }
-                    try {
-                        const response = await fetch(`/words/${wordToRemove}`, {
-                            method: 'DELETE'
-                        });
-                        if (response.ok) {
-                            console.log('Word deleted from the database');
-                            listItem.remove();
-                        }
-                    } catch (error) {
-                        console.error('Error:', error);
-                        alert('Failed to delete word from the database');
-                    }
-                });
-
-                newWord.appendChild(deleteButton);
             }
-        } else {
-            console.error(data.responseData.translatedText);
         }
-    } catch (error) {
-        console.error('Error:', error);
-        alert('Failed to translate and add word');
+    }catch(error){
+        console.log(error)
     }
-});
-
-words.addEventListener('click', async (event) => {
-    if (event.target.classList.contains('deleteButton')) {
-        const listItem = event.target.parentElement;
-        const wordToRemove = listItem.textContent.split(' - ')[0];
-        const indexToRemove = wordsArrayTranslate.indexOf(wordToRemove);
-        if (indexToRemove !== -1) {
-            wordsArrayTranslate.splice(indexToRemove, 1);
-            wordsArrayTranslation.splice(indexToRemove, 1);
-        }
-
-        try {
-            const response = await fetch(`/words/${wordToRemove}`, {
-                method: 'DELETE'
-            });
-            if (response.ok) {
-                console.log('Word deleted from the database');
-                words.removeChild(listItem);
-            }
-        } catch (error) {
-            console.error('Error:', error);
-            alert('Failed to delete word from the database');
-        }
-
-        
-    }
-});
+})
 
 let currentIndex = 0;
 
