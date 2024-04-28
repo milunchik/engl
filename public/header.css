@@ -5,7 +5,9 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: rgb(53, 17, 111);
+    /*background-color: rgb(53, 17, 111);*/
+    background-color: #FFFFFF;
+    box-shadow: 1px 1px 1px 1px #bdbdbd;
     padding: 10px;
     z-index: 1000;
 }
@@ -17,11 +19,12 @@ nav {
 }
 
 nav a {
-    color: white;
+    color: black;
+
     text-decoration: none;
     font-size: 18px;
 }
 
 .main-container {
-    margin-top: 80px; /* Збільшує відступ контенту від верхнього краю сторінки, щоб уникнути перекриття з заголовком */
+    margin-top: 80px;
 }

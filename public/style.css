@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
 }
 
 body{
@@ -10,7 +11,7 @@ display: flex;
 align-items: center;
 justify-content: center;
 min-height: 100vh;
-background: blueviolet;
+background: #f7f7f7eb;
 }
 .main-container{
     align-items: center;
@@ -19,8 +20,8 @@ background: blueviolet;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: whitesmoke;
-    width: 690px;
+    background-color: rgba(240, 233, 37, 0.266);
+    width: 1200px;
     border-radius: 7px;
     padding: 30px;
     position: relative;
@@ -32,37 +33,38 @@ background: blueviolet;
     cursor: pointer;
     font-size: 17px;
     border-radius: 5px;
-    background: blueviolet;
+    background: black;
     color: white;
     padding: 5px;
     margin: 5px;
 }
-.start{
-    margin-bottom: 10px;
-}
+
 .start, .check-button{
     padding: 10px;
+    font-size: 25px;
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 .container-learnWords {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     font-size: 17px;
-    border-radius: 5px;
-    width: 690px;
-    background: white;
-    border-radius: 7px;
-    padding: 30px;
+    width: 1200px;
+    background: rgba(240, 233, 37, 0.266);
+    border-radius: 10px;
+    padding: 35px;
 }
 .user-translation{
-    width: 165px;
+    width: 227px;
     order: none;
     outline: none;
     resize: none;
 }
 .container{
-    width: 690px;
+    width: 1200px;
     background: white;
     border-radius: 7px;
     padding: 30px;
@@ -131,7 +133,7 @@ cursor: pointer;
 .exchange{
     border: none;
     border-radius: 5px;
-    background: blueviolet;
+    background: black;
     padding: 10px 20px;
     margin: 5px
 }
@@ -145,7 +147,19 @@ cursor: pointer;
     color: white;
     font-size: 17px;
     border-radius: 5px;
-    background: blueviolet;
+    background: black;
 }
 
-
+.center-container{
+   display: flex;
+    flex-direction: column;
+    align-items: center; 
+    padding: 2px;
+    margin: 3px;
+}
+.center-button{
+    margin-top: 5px;
+}
+ul{
+    margin: 3px
+}
