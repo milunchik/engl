@@ -1,3 +1,5 @@
+const { response } = require("express");
+
 const wordsList = document.querySelector('.listWords'),
 frontCard = document.querySelector('.front'),
 backCard = document.querySelector('.back'),
@@ -24,6 +26,8 @@ fetch('/allwords')
                         frontCard.textContent = `${wordsArray[0]}`
                         backCard.textContent = `${wordsTranslation[0]}`
                         })         
+    }).catch(error => {
+        console.error( error);
     })
 
 nextBtn.addEventListener('click', ()=>{
@@ -33,9 +37,7 @@ nextBtn.addEventListener('click', ()=>{
                 currentIndex = 0;
             }
             frontCard.textContent = `${wordsArray[currentIndex]}`
-            backCard.textContent = `${wordsTranslation[currentIndex]}`
-        
-            
+            backCard.textContent = `${wordsTranslation[currentIndex]}`    
     })
 
     prevBtn.addEventListener('click', ()=>{

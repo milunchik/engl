@@ -122,4 +122,3 @@ icons.forEach(icon =>{
         }
     })
 });
-

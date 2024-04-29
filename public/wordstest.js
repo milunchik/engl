@@ -24,10 +24,12 @@ startBtn.addEventListener('click', ()=>
             data.words.forEach(word => {
             wordsArray.push(`${word.word.toLowerCase()}`)
             wordsTranslation.push(`${word.translation.toLowerCase()}`)
-                    })
-                displayWords()
         })
-})
+        displayWords()
+    })
+    .catch(error => {
+        console.error('There was a problem with the fetch operation:', error);
+    })
 
 checkBtn.addEventListener('click', ()=>
     {

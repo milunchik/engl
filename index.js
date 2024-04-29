@@ -12,19 +12,7 @@ mongoose.connect('mongodb+srv://emili:a8SG5P8Ri1cpIpuu@backenddb.86q6xxs.mongodb
 .catch((error)=>{
     console.log('Connection falied',error)
 })
-/*
-app.get('/words',(req, res)=>{
-    res.send('Write the translation of the word')
-})
 
-app.get('/flashcard',(req,res)=>{
-    res.send('Learn new words by flashcards')
-});
-*/
-
-
-//app.use('view engine', 'ejs')
-//app.set('views',__dirname +'/views' )
 app.use(express.static( 'public'))
 app.use(express.json())
 app.use(wordRoutes)
