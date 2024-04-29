@@ -3,64 +3,43 @@ writeWords = document.querySelector('.randomWords'),
 gameUserTranslation = document.querySelector('.user-translation'),
 checkBtn = document.querySelector('.check-button')
 
-wordsArrayTranslation = [];
-wordsArrayTranslate = [];
+let wordsArray = []
+let wordsTranslation = []
+let randomNumber = 0
 
-async function displayWords(){    
-    try{
-        const response = await fetch('/')
-    }catch(error){
-        
-    }
+function displayWords(){
+     randomNumber = Math.floor(Math.random() * wordsArray.length)
+    const li = document.createElement('li');
+    li.textContent = wordsTranslation[randomNumber]
+    writeWords.innerHTML = '';
+    writeWords.appendChild(li);
 }
-//word/:id
 
-
-startBtn.addEventListener('click', ()=>{
-    console.log('start')
-    displayWords()
+startBtn.addEventListener('click', ()=>
+    {
+        fetch('/allwords')
+            .then(response => response.json())
+            .then(data => {
+            writeWords.innerHTML = '';
+            data.words.forEach(word => {
+            wordsArray.push(`${word.word.toLowerCase()}`)
+            wordsTranslation.push(`${word.translation.toLowerCase()}`)
+                    })
+                displayWords()
+        })
 })
 
-checkBtn.addEventListener('click', ()=>{
-    console.log('check')
-    console.log(gameUserTranslation.value)
-})
-
-
-/*let currentIndex = 0;
-startBtn.addEventListener('click', ()=>{
-    if (wordsArrayTranslation.length > 0) {
-        if (wordsArrayTranslation.length <= currentIndex) {
-            currentIndex = 0;
-            alert("You've completed all the words!");
-            return;
+checkBtn.addEventListener('click', ()=>
+    {
+        if (gameUserTranslation.value.trim().toLowerCase() === wordsArray[randomNumber]) {
+            alert("Correct!");
+            writeWords.innerHTML = ''
+        } else {
+            alert('Try again!');
+            const li = document.createElement('li');
+            li.textContent = wordsTranslation[randomNumber]
+            writeWords.appendChild(li)
+            writeWords.innerHTML = ''  
         }
-                let randomWord = wordsArrayTranslation[currentIndex];
-                let newWord = document.createElement('li');
-                newWord.textContent = randomWord;
-                writeWords.appendChild(newWord);
-                currentIndex++;               
-        }
-        else{
-                alert("There aren`t words to learn")
-            }
-
-            checkBtn.addEventListener('click', ()=>{
-                
-                if (currentIndex > 0) {
-                    userTranslation = gameUserTranslation.value.trim().toLowerCase();
-                    const correctTranslationTrimmed = wordsArrayTranslate[currentIndex - 1].trim().toLowerCase();
-                    if (userTranslation === correctTranslationTrimmed) {
-                        alert("Correct");
-                        gameUserTranslation.value = "";
-                        writeWords.removeChild(writeWords.lastChild);
-                        
-                    } else if(userTranslation != correctTranslationTrimmed){
-                        alert("Try again");
-                        gameUserTranslation.value = "";
-                    }
-                }
-                
-            });
-
-    });*/
+        gameUserTranslation.value = ''
+    })
