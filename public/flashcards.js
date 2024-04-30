@@ -1,5 +1,3 @@
-const { response } = require("express");
-
 const wordsList = document.querySelector('.listWords'),
 frontCard = document.querySelector('.front'),
 backCard = document.querySelector('.back'),

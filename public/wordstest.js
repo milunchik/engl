@@ -45,3 +45,4 @@ checkBtn.addEventListener('click', ()=>
         }
         gameUserTranslation.value = ''
     })
+})
