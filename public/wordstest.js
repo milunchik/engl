@@ -30,6 +30,7 @@ startBtn.addEventListener('click', ()=>
     .catch(error => {
         console.error('There was a problem with the fetch operation:', error);
     })
+})
 
 checkBtn.addEventListener('click', ()=>
     {
@@ -45,4 +46,3 @@ checkBtn.addEventListener('click', ()=>
         }
         gameUserTranslation.value = ''
     })
-})
