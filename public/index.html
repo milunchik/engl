@@ -1,73 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Google Translate</title>
-    <link rel="stylesheet" href="header.css">
-    <link rel="stylesheet" href="footer.css">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" crossorigin="anonymous">
-    
-</head>
-<body>
+    <link rel="stylesheet" href="./css/header.css" />
+    <link rel="stylesheet" href="./css/footer.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
     <header>
-        <nav>
+      <nav>
         <a href="wordsTest.html">TestWords</a>
         <a href="flashcards.html">FlashCard</a>
-        </nav>
+      </nav>
     </header>
     <div class="main-container">
-    <div class="container">
-        <div class = "wrapper">
-            <div class="text-input">
-                
-                <textarea class="from-text" placeholder="Enter text"></textarea>
-                <textarea class="to-text" placeholder="Translation" readonly disabled></textarea>
-            </div>
-            <ul class="controls">
-                <li class="row from">
-                    <div class ="icons">
-                        <i id="from" class="fas fa-volume-up"></i>
-                        <i id="from" class="fas fa-copy"></i>
-                    </div>
-                    <select>
-                        <option value="en-Us">English</option>
-                        <option value="uk-Ua">Ukrainian</option>
-                    </select>
-                </li>
-                <button class="exchange">--</button>
-                <li class="row to">
-                    <select>
-                        <option value="uk-Ua">Ukrainian</option>
-                        <option value="en-Us">English</option>
-                    </select>
-                    <div class ="icons">
-                        <i id="to" class="fas fa-volume-up"></i>
-                        <i id="to" class="fas fa-copy"></i>
-                    </div>
-                </li>
-            </ul>
+      <div class="container">
+        <div class="wrapper">
+          <div class="text-input">
+            <textarea class="from-text" placeholder="Enter text"></textarea>
+            <textarea
+              class="to-text"
+              placeholder="Translation"
+              readonly
+              disabled
+            ></textarea>
+          </div>
+          <ul class="controls">
+            <li class="row from">
+              <div class="icons">
+                <i id="from" class="fas fa-volume-up"></i>
+                <i id="from" class="fas fa-copy"></i>
+              </div>
+              <select>
+                <option value="en-US">English</option>
+                <option value="uk-UA">Ukrainian</option>
+              </select>
+            </li>
+            <button class="exchange">--</button>
+            <li class="row to">
+              <select>
+                <option value="uk-UA">Ukrainian</option>
+                <option value="en-US">English</option>
+              </select>
+              <div class="icons">
+                <i id="to" class="fas fa-volume-up"></i>
+                <i id="to" class="fas fa-copy"></i>
+              </div>
+            </li>
+          </ul>
         </div>
         <button class="translate-button">Translate text</button>
-    </div>
-    <br>
-    <div class="container-words">
-        
+      </div>
+      <br />
+      <div class="container-words">
         <ul id="wordsList">
-            <li>New Words</li>
+          <li>New Words</li>
         </ul>
+      </div>
     </div>
-</div>
     <footer>
-        <div>
-            
-            <a href="https://www.instagram.com/ab_emily_/" target="_blank">
-                <img src="./inst-icon.png"></img>
-            </a>
-        </div>
+      <div>
+        <a href="https://www.instagram.com/ab_emily_/" target="_blank">
+          <img src="./img/inst-icon.png" alt="Instagram Icon" />
+        </a>
+      </div>
     </footer>
-    <script src="./countries.js"></script>
-    <script src="./script.js"></script>
-</body>
+    <script src="./js/countries.js"></script>
+    <script src="./js/script.js"></script>
+  </body>
 </html>
